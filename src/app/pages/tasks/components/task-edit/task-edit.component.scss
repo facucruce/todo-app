@@ -1,0 +1,17 @@
+.edit-container {
+    display: grid;
+    grid-template-rows: min-content min-content min-content;
+    margin: 20px 10px 20px 0px;
+    position: relative;
+    height: calc(100% - 40px);
+    .buttons {
+        display: grid;
+        grid-template-columns: auto min-content;
+        align-items: center;
+        gap: 10px;
+        position: absolute;
+        bottom: 18px;
+        left: 0;
+        right: 0;
+    }
+}

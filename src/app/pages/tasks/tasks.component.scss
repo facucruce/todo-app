@@ -1,0 +1,15 @@
+.page {
+    display: grid;
+    grid-template-rows: min-content auto;
+    height: 100%;
+    .page-content {
+        display: grid;
+        grid-template-columns: 1fr auto;
+    
+        .list {
+            margin: 20px;
+            display: grid;
+            grid-template-rows: auto min-content;
+        }
+    }
+}

@@ -1,0 +1,21 @@
+.search {
+    width: 100%;
+}
+mat-card {
+    margin-bottom: 8px;
+
+    .card-content {
+        display: grid;
+        grid-template-columns: min-content auto min-content min-content min-content;
+        align-items: center;
+        column-gap: 8px;
+
+        p {
+            margin: 0;
+        }
+
+        .secondary-text {
+            color: #878787;
+        }
+    }
+}

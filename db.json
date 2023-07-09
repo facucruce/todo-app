@@ -1,9 +1,10 @@
 {
   "tasks": [
-    { 
+    {
       "id": 1,
-      "name": "FIRST TODO",
-      "priority": 1
+      "name": "asda",
+      "priority": 2,
+      "remainingTime": 1800
     }
   ]
 }

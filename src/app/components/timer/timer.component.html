@@ -1,0 +1,11 @@
+<mat-progress-spinner *ngIf="timerRunning" mode="determinate" [value]="remainingTimePercentage"></mat-progress-spinner>
+<div class="play-pause" *ngIf="!timerRunning">
+    <button (click)="startTimer()" mat-mini-fab color="primary">
+        <mat-icon>play_arrow</mat-icon>
+    </button>
+</div>
+<div class="play-pause" *ngIf="timerRunning">
+    <button  (click)="stopTimer()" mat-mini-fab color="primary">
+        <mat-icon>pause</mat-icon>
+    </button>
+</div>
