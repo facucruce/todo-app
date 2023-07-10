@@ -13,7 +13,7 @@ export class TimerComponent {
 
   get spendTimePercentage(): number {
     if (this.remainingTime) {
-      return (this.totalTime * this.remainingTime) / 100;
+      return (this.remainingTime * 100) / this.totalTime;
     }
     return 0;
   }
