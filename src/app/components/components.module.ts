@@ -4,9 +4,8 @@ import { TimerComponent } from './timer/timer.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
-
-
-
+import { SecondsToMinutesPipe } from '../pipes/seconds-to-minutes.pipe';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -16,10 +15,12 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatButtonModule
+    MatButtonModule,
+    PipesModule
   ],
   exports: [
     TimerComponent
-  ]
+  ],
+  providers: [SecondsToMinutesPipe],
 })
 export class ComponentsModule { }

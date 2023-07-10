@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { tap } from 'rxjs';
 import { Task } from 'src/app/interfaces/task';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-tasks',
@@ -7,13 +9,15 @@ import { Task } from 'src/app/interfaces/task';
   styleUrls: ['./tasks.component.scss']
 })
 export class TasksComponent implements OnInit {
-  selectedTask!: Task;
-  constructor() {
+  selectedTask!: Task | null;
+  constructor(
+    private taskService: TaskService
+  ) {
   }
 
   ngOnInit(): void {
-  }
-  setSelectTask(task: Task) {
-    this.selectedTask = task;
+    this.taskService.tasksSelected$.pipe(
+      tap((task) => this.selectedTask = task)
+    ).subscribe();
   }
 }

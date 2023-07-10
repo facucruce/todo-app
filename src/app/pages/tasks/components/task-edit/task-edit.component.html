@@ -1,7 +1,9 @@
-
-<form class="edit-container" [formGroup]="taskForm" (ngSubmit)="submitForm()">
+<form class="edit-container" [formGroup]="taskForm">
+    <button (click)="closeEdit()" mat-icon-button color="primary">
+        <mat-icon>close</mat-icon>
+    </button>
     <mat-form-field appearance="outline">
-        <input matInput placeholder="Add task" formControlName="name" placeholder="Name" required>
+        <input matInput formControlName="name" placeholder="Name" required>
         <mat-error *ngIf="taskForm.controls['name'].invalid && taskForm.controls['name'].touched">
             Name is required and should be at most 30 characters.
         </mat-error>
@@ -18,8 +20,8 @@
         </mat-error>
     </mat-form-field>
     <div class="buttons">
-        <button type="submit" mat-raised-button>Save</button>
-        <button (click)="deleteTaks($event, task)" mat-icon-button color="primary">
+        <button type="submit" (click)="submitForm()" mat-raised-button>Save</button>
+        <button (click)="deleteTaks(task)" mat-icon-button color="primary">
             <mat-icon>delete</mat-icon>
         </button>
     </div>

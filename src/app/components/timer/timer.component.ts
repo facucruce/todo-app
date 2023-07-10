@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TimerComponent {
   timerRunning = false;
-  @Input() remainingTime!: number | null;
+  @Input() remainingTime!: number;
   @Output() stopChange = new EventEmitter<number>();
   totalTime = 30 * 60; // 30 minutes in seconds
 
@@ -25,9 +25,7 @@ export class TimerComponent {
 
   stopTimer() {
     this.timerRunning = false;
-    if(this.remainingTime) {
-      this.stopChange.emit(this.remainingTime)
-    }
+    this.stopChange.emit(this.remainingTime)
   }
 
   updateTimer() {
@@ -36,7 +34,7 @@ export class TimerComponent {
         this.remainingTime--;
         this.updateTimer();
       } else {
-        this.timerRunning = false;
+        this.stopTimer();
       }
     }, 1000);
   }

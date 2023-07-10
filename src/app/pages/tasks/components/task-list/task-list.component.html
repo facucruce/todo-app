@@ -6,14 +6,14 @@
 <div class="task"
     *ngIf="(!searchControl.value || searchControl.value.length < 3) || (searchControl.value.length > 2 && filteredTasks.length)">
     <mat-card *ngFor="let task of filteredTasks.length ? filteredTasks : taskService.tasks$ | async;">
-        <mat-card-content (click)="card(task)">
+        <mat-card-content (click)="editTask(task)">
             <div class="card-content">
-                <mat-checkbox color="primary" (click)="elresto('toco el mat-checkbox', $event)"></mat-checkbox>
+                <mat-checkbox color="primary" (click)="stopPropagation($event)"></mat-checkbox>
                 <div>
-                    <p>{{task.name}}({{task.remainingTime | secondsToMinutes }})</p>
+                    <p>{{task.name}}</p>
                     <p class="secondary-text">{{task.priority}} priority</p>
                 </div>
-                <app-timer (click)="elresto('', $event)" (stopChange)="taskTimerStop(task, $event)" [remainingTime]="task.remainingTime"></app-timer>
+                <app-timer *ngIf="task.remainingTime > 0" (click)="stopPropagation($event)" (stopChange)="taskTimerStop(task, $event)" [remainingTime]="task.remainingTime"></app-timer>
                 <div class="delete">
                     <button (click)="deleteTaks($event, task)" mat-icon-button color="primary">
                         <mat-icon>delete</mat-icon>

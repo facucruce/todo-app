@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { catchError, debounceTime, of, take, tap } from 'rxjs';
 import { Task } from 'src/app/interfaces/task';
@@ -14,7 +14,6 @@ export class TaskListComponent implements OnInit {
   searchControl = new FormControl('');
   filteredTasks: Task[] = [];
   showNoTasksMessage: boolean = false;
-  @Output() taskSelected = new EventEmitter<Task>();
 
   constructor(
     private apiService: ApiService,
@@ -44,14 +43,13 @@ export class TaskListComponent implements OnInit {
 
   }
 
-  card(task:Task) {
-    console.log({ task });
-    this.taskSelected.emit(task)
+  editTask(task:Task) {
+    this.taskService.setTaskSelected(null);
+    this.taskService.setTaskSelected(task);
   }
 
-  elresto(text: string, $event: MouseEvent) {
+  stopPropagation($event: MouseEvent) {
     $event.stopPropagation();
-    console.log({ text });
   }
   deleteTaks($event: MouseEvent, task: Task) {
     $event.stopPropagation()

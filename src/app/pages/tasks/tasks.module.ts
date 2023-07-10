@@ -14,10 +14,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
-import { TaskCreateComponent } from './task-create/task-create.component';
+import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { SecondsToMinutesPipe } from 'src/app/pipes/seconds-to-minutes.pipe';
-import { PipesModule } from 'src/app/pipes/pipes.module';
 
 
 @NgModule({
@@ -40,10 +38,8 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     MatButtonModule,
     MatSelectModule,
     ComponentsModule,
-    PipesModule
   ],
   providers: [
-    SecondsToMinutesPipe
   ]
 })
 export class TasksModule { }

@@ -1,0 +1,15 @@
+.timer-container {
+    display: grid;
+    grid-template-columns: max-content auto;
+    align-items: center;
+    gap: 8px;
+
+    .spinner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+            margin: 0;
+        }
+    }
+}

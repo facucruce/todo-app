@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 import { Priority, Task } from 'src/app/interfaces/task';
@@ -11,7 +11,7 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./task-edit.component.scss']
 })
 export class TaskEditComponent implements OnInit {
-  @Input() task!: Task;
+  task!: Task;
   taskForm: FormGroup;
 
   Priority = Priority;
@@ -40,9 +40,12 @@ export class TaskEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.task) {
-      this.taskForm.patchValue(this.task)
-    }
+    this.taskService.tasksSelected$.subscribe((task) => {
+      if(task) {
+        this.task = task;
+      }
+      this.taskForm.patchValue(this.task);
+    });
   }
 
   submitForm() {
@@ -54,25 +57,28 @@ export class TaskEditComponent implements OnInit {
         remainingTime: this.task.remainingTime
       };
       if (this.task.id) {
-        this.apiService.putOne(this.task.id, updatedTask).subscribe((response) => {
-          // Manejar la respuesta del servidor, si es necesario
-        });
+        this.apiService.putOne(this.task.id, updatedTask).pipe(
+          tap(() => {
+            this.taskService.updateTask(updatedTask);
+          })
+        ).subscribe()
       }
     }
   }
 
 
-  deleteTaks($event: MouseEvent, task: Task) {
-    $event.stopPropagation()
+  deleteTaks(task: Task) {
     if (task.id) {
       this.apiService.deleteTask(task.id).pipe(
         tap(() => {
           this.taskService.removeTask(task);
+          this.closeEdit()
         })
       ).subscribe();
     }
   }
 
-
-
+  closeEdit() {
+    this.taskService.setTaskSelected(null);
+  }
 }
