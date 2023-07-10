@@ -2,33 +2,41 @@
   "tasks": [
     {
       "id": 1,
-      "name": "ASDASDASd",
-      "priority": 2,
-      "spendTime": 0,
-      "totalTime": 1800,
-      "done": false
-    },
-    {
-      "id": 2,
-      "name": "asdsad",
-      "priority": 2,
-      "spendTime": 0,
-      "totalTime": 1800,
-      "done": false
-    },
-    {
-      "id": 3,
-      "name": "asdsad",
+      "name": "FIRST TASK, LOW PRIORITY",
       "priority": 1,
       "spendTime": 0,
       "totalTime": 1800,
       "done": false
     },
     {
-      "id": 4,
-      "name": "SDSAd",
+      "id": 2,
+      "name": "SECOND TASK, MEDIUM PRIORITY",
       "priority": 2,
+      "spendTime": 900,
+      "totalTime": 1800,
+      "done": false
+    },
+    {
+      "id": 3,
+      "name": "THIRD TASK, HIGH PRIORITY",
+      "priority": 3,
+      "spendTime": 1600,
+      "totalTime": 1800,
+      "done": false
+    },
+    {
+      "id": 4,
+      "name": "DONNE TASK, NO SPEND TIME",
+      "priority": 1,
       "spendTime": 0,
+      "totalTime": 1800,
+      "done": true
+    },
+    {
+      "id": 5,
+      "name": "TASK DONE WITH ALL TIME SPEND",
+      "priority": 1,
+      "spendTime": 1800,
       "totalTime": 1800,
       "done": false
     }
