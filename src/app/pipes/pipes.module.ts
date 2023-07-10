@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SecondsToMinutesPipe } from './seconds-to-minutes.pipe';
+import { PriorityPipe } from './priority.pipe';
 
 @NgModule({
   declarations: [
-    SecondsToMinutesPipe
+    SecondsToMinutesPipe,
+    PriorityPipe
   ],
   imports: [
     CommonModule,
   ],
   exports: [
-    SecondsToMinutesPipe
+    SecondsToMinutesPipe,
+    PriorityPipe
   ]
 })
 export class PipesModule { }

@@ -41,7 +41,7 @@ export class TaskEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskService.tasksSelected$.subscribe((task) => {
-      if(task) {
+      if (task) {
         this.task = task;
       }
       this.taskForm.patchValue(this.task);
@@ -54,7 +54,9 @@ export class TaskEditComponent implements OnInit {
         id: this.task.id,
         name: this.taskForm.value.name,
         priority: this.taskForm.value.priority,
-        remainingTime: this.task.remainingTime
+        spendTime: this.task.spendTime,
+        totalTime: this.task.totalTime,
+        done: this.task.done,
       };
       if (this.task.id) {
         this.apiService.putOne(this.task.id, updatedTask).pipe(

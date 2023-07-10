@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject  } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Task } from '../interfaces/task';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { Task } from '../interfaces/task';
 })
 export class TaskService {
   tasks$ = new BehaviorSubject<Task[]>([]);
-  tasksSelected$ = new BehaviorSubject<Task | null>(null); 
+  tasksSelected$ = new BehaviorSubject<Task | null>(null);
   constructor() { }
 
   setTasks(task: Task[]) {
@@ -39,8 +39,6 @@ export class TaskService {
 
   setTaskSelected(task: Task | null) {
     this.tasksSelected$.next(task);
-    console.log(this.tasksSelected$.value);
-    
   }
 
 }

@@ -12,7 +12,7 @@ export class ApiService {
   constructor(
     private httpClient: HttpClient
   ) { }
-  
+
   getTasks(): Observable<Task[]> {
     return this.httpClient.get(this.apiUrl) as Observable<Task[]>;
   }

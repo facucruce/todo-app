@@ -1,12 +1,12 @@
 <div class="page">
-  <mat-toolbar color="primary">Tasks</mat-toolbar>
   <div class="page-content">
+    <mat-toolbar color="primary">Tasks ({{getTotalTimeUsed() | secondsToMinutes}})</mat-toolbar>
     <div class="list">
       <app-task-list></app-task-list>
       <app-task-create></app-task-create>
     </div>
-    <div class="edit">
-      <app-task-edit *ngIf="selectedTask"></app-task-edit>
-    </div>
+  </div>
+  <div class="edit">
+    <app-task-edit *ngIf="selectedTask"></app-task-edit>
   </div>
 </div>

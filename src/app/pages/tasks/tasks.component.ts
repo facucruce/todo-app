@@ -20,4 +20,11 @@ export class TasksComponent implements OnInit {
       tap((task) => this.selectedTask = task)
     ).subscribe();
   }
+  getTotalTimeUsed(): number {
+    let totalTimeUsed = 0;
+    this.taskService.tasks$.value.forEach(task => {
+      totalTimeUsed += task.spendTime;
+    });
+    return totalTimeUsed;
+  }
 }

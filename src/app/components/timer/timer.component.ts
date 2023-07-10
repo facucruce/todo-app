@@ -7,15 +7,22 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class TimerComponent {
   timerRunning = false;
-  @Input() remainingTime!: number;
+  @Input() spendTime!: number;
+  @Input() totalTime!: number;
   @Output() stopChange = new EventEmitter<number>();
-  totalTime = 30 * 60; // 30 minutes in seconds
 
-  get remainingTimePercentage(): number {
-    if(this.remainingTime) {
-      return (this.remainingTime / this.totalTime) * 100;
+  get spendTimePercentage(): number {
+    if (this.remainingTime) {
+      return (this.totalTime * this.remainingTime) / 100;
     }
     return 0;
+  }
+
+  get remainingTime(): number {
+    if (this.spendTime) {
+      return this.totalTime - this.spendTime
+    }
+    return this.totalTime;
   }
 
   startTimer() {
@@ -25,13 +32,13 @@ export class TimerComponent {
 
   stopTimer() {
     this.timerRunning = false;
-    this.stopChange.emit(this.remainingTime)
+    this.stopChange.emit(this.spendTime);
   }
 
   updateTimer() {
     setTimeout(() => {
       if (this.timerRunning && this.remainingTime && this.remainingTime > 0) {
-        this.remainingTime--;
+        this.spendTime++;
         this.updateTimer();
       } else {
         this.stopTimer();

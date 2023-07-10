@@ -43,14 +43,25 @@ export class TaskListComponent implements OnInit {
 
   }
 
-  editTask(task:Task) {
+  editTask(task: Task) {
     this.taskService.setTaskSelected(null);
     this.taskService.setTaskSelected(task);
+  }
+  markDone(task: Task, $event: MouseEvent) {
+    $event.stopPropagation();
+    if (task.id) {
+      task.done = true;
+      this.apiService.putOne(task.id, task).pipe(
+        take(1),
+        catchError(() => of(alert("Ups! Can't save time progress"))),
+      ).subscribe();
+    }
   }
 
   stopPropagation($event: MouseEvent) {
     $event.stopPropagation();
   }
+
   deleteTaks($event: MouseEvent, task: Task) {
     $event.stopPropagation()
     if (task.id) {
@@ -61,8 +72,9 @@ export class TaskListComponent implements OnInit {
       ).subscribe();
     }
   }
-  taskTimerStop(task: Task, remainingTime: number) {
-    task.remainingTime = remainingTime;
+
+  taskTimerStop(task: Task, spendTime: number) {
+    task.spendTime = spendTime;
     if (task.id) {
       this.apiService.putOne(task.id, task).pipe(
         take(1),

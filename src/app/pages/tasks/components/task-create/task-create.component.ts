@@ -12,7 +12,6 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class TaskCreateComponent {
   taskForm: FormGroup;
-  
   Priority = Priority;
 
   constructor(
@@ -46,11 +45,13 @@ export class TaskCreateComponent {
       id: null,
       name: this.taskForm.value.name,
       priority: this.taskForm.value.priority,
-      remainingTime: 30 * 60
+      spendTime: 0,
+      totalTime: 1800,
+      done: false
     };
 
     this.apiService.createTask(task).pipe(
-      tap(({ id }) =>{
+      tap(({ id }) => {
         task.id = id;
         this.taskService.addTask(task);
         this.taskForm.reset();

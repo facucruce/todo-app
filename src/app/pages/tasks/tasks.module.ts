@@ -16,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import { TaskCreateComponent } from './components/task-create/task-create.component';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { PipesModule } from 'src/app/pipes/pipes.module';
+import { DirectivesModule } from 'src/app/directives/directives.module';
 
 
 @NgModule({
@@ -38,8 +40,11 @@ import { ComponentsModule } from 'src/app/components/components.module';
     MatButtonModule,
     MatSelectModule,
     ComponentsModule,
+    PipesModule,
+    DirectivesModule
   ],
   providers: [
+
   ]
 })
 export class TasksModule { }

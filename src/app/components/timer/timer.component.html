@@ -1,17 +1,16 @@
 <div class="timer-container">
-    <div class="spinner">
-        <mat-progress-spinner diameter="40" mode="determinate"
-        [value]="remainingTimePercentage"></mat-progress-spinner>
-        <p>{{this.remainingTime | secondsToMinutes}}</p>
-    </div>
-    <div class="play-pause" *ngIf="!timerRunning">
-        <button (click)="startTimer()" mat-mini-fab color="primary">
-            <mat-icon>play_arrow</mat-icon>
-        </button>
-    </div>
-    <div class="play-pause" *ngIf="timerRunning">
-        <button (click)="stopTimer()" mat-mini-fab color="primary">
-            <mat-icon>pause</mat-icon>
-        </button>
-    </div>
+  <div class="spinner">
+    <mat-progress-spinner diameter="40" mode="determinate" [value]="spendTimePercentage"></mat-progress-spinner>
+    <p>{{remainingTime | secondsToMinutes}}</p>
+  </div>
+  <div class="play-pause" *ngIf="!timerRunning">
+    <button (click)="startTimer()" mat-mini-fab color="primary">
+      <mat-icon>play_arrow</mat-icon>
+    </button>
+  </div>
+  <div class="play-pause" *ngIf="timerRunning">
+    <button (click)="stopTimer()" mat-mini-fab color="primary">
+      <mat-icon>pause</mat-icon>
+    </button>
+  </div>
 </div>

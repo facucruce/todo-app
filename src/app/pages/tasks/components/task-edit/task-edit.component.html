@@ -1,28 +1,28 @@
 <form class="edit-container" [formGroup]="taskForm">
-    <button (click)="closeEdit()" mat-icon-button color="primary">
-        <mat-icon>close</mat-icon>
-    </button>
-    <mat-form-field appearance="outline">
-        <input matInput formControlName="name" placeholder="Name" required>
-        <mat-error *ngIf="taskForm.controls['name'].invalid && taskForm.controls['name'].touched">
-            Name is required and should be at most 30 characters.
-        </mat-error>
-    </mat-form-field>
+  <button (click)="closeEdit()" mat-icon-button color="primary">
+    <mat-icon>close</mat-icon>
+  </button>
+  <mat-form-field appearance="outline">
+    <input matInput formControlName="name" placeholder="Name" uppercaseText required>
+    <mat-error *ngIf="taskForm.controls['name'].invalid && taskForm.controls['name'].touched">
+      Name is required and should be at most 30 characters.
+    </mat-error>
+  </mat-form-field>
 
-    <mat-form-field appearance="outline">
-        <mat-select formControlName="priority" placeholder="Priority" required>
-            <mat-option [value]="Priority.Low">{{ Priority.Low }}</mat-option>
-            <mat-option [value]="Priority.Medium">{{ Priority.Medium }}</mat-option>
-            <mat-option [value]="Priority.High">{{ Priority.High }}</mat-option>
-        </mat-select>
-        <mat-error *ngIf="taskForm.controls['priority'].invalid && taskForm.controls['priority'].touched">
-            Priority is required.
-        </mat-error>
-    </mat-form-field>
-    <div class="buttons">
-        <button type="submit" (click)="submitForm()" mat-raised-button>Save</button>
-        <button (click)="deleteTaks(task)" mat-icon-button color="primary">
-            <mat-icon>delete</mat-icon>
-        </button>
-    </div>
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="priority" placeholder="Priority" required>
+      <mat-option [value]="Priority.Low">{{ Priority.Low | priority }}</mat-option>
+      <mat-option [value]="Priority.Medium">{{ Priority.Medium | priority }}</mat-option>
+      <mat-option [value]="Priority.High">{{ Priority.High | priority }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="taskForm.controls['priority'].invalid && taskForm.controls['priority'].touched">
+      Priority is required.
+    </mat-error>
+  </mat-form-field>
+  <div class="buttons">
+    <button type="submit" (click)="submitForm()" mat-raised-button>Save</button>
+    <button (click)="deleteTaks(task)" mat-icon-button color="primary">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
 </form>

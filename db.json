@@ -2,9 +2,35 @@
   "tasks": [
     {
       "id": 1,
-      "name": "asda",
+      "name": "ASDASDASd",
       "priority": 2,
-      "remainingTime": 1800
+      "spendTime": 0,
+      "totalTime": 1800,
+      "done": false
+    },
+    {
+      "id": 2,
+      "name": "asdsad",
+      "priority": 2,
+      "spendTime": 0,
+      "totalTime": 1800,
+      "done": false
+    },
+    {
+      "id": 3,
+      "name": "asdsad",
+      "priority": 1,
+      "spendTime": 0,
+      "totalTime": 1800,
+      "done": false
+    },
+    {
+      "id": 4,
+      "name": "SDSAd",
+      "priority": 2,
+      "spendTime": 0,
+      "totalTime": 1800,
+      "done": false
     }
   ]
 }
