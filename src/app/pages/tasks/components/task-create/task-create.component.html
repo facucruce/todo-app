@@ -1,8 +1,5 @@
 <form class="add-container" [formGroup]="taskForm" (ngSubmit)="create()">
   <mat-form-field appearance="outline">
-    <button mat-icon-button matPrefix type="submit" [disabled]="taskForm.invalid">
-      <mat-icon>add</mat-icon>
-    </button>
     <input matInput placeholder="Add task" formControlName="name" uppercaseText required>
     <mat-error *ngIf="taskForm.controls['name'].invalid && taskForm.controls['name'].touched">
       Name is required and should be at most 30 characters.
@@ -19,4 +16,8 @@
       Priority is required.
     </mat-error>
   </mat-form-field>
+  
+  <button mat-icon-button matPrefix type="submit" [disabled]="taskForm.invalid">
+    <mat-icon>add</mat-icon>
+  </button>
 </form>
